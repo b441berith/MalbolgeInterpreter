@@ -1,5 +1,8 @@
 package com.malbolge;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import com.processor.ProgramRuntime;
 
 /**
@@ -9,6 +12,10 @@ import com.processor.ProgramRuntime;
  */
 public class MalbolgeProgramRuntime implements ProgramRuntime<MalbolgeRuntimeEnvironment, MalbolgeProgram> {
     public MalbolgeRuntimeEnvironment createRuntimeEnvironment(MalbolgeProgram program) {
-        return null;
+        return new MalbolgeRuntimeEnvironment(System.in, System.out, program);
+    }
+
+    public MalbolgeRuntimeEnvironment createRuntimeEnvironment(InputStream in, OutputStream out, MalbolgeProgram program) {
+        return new MalbolgeRuntimeEnvironment(in, out, program);
     }
 }
